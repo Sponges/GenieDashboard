@@ -2,9 +2,10 @@ extends ./layout.jade
 
 block content
 	.row
-		ul.collection
-			li.collection-item.center-align.
-				Already have an account? Click <a href="/login">here</a> to login.
+		.col.s12
+			ul.collection
+				li.collection-item.center-align.
+					Already have an account? Click <a href="/login">here</a> to login.
 	.row
 		form.col.s12
 			include input_email.jade
