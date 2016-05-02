@@ -1,0 +1,37 @@
+extends ./layout.jade
+
+block content
+	.row
+		ul.collection
+			li.collection-item.center-align.
+				Make sure you check out the <a href="/documentation">documentation</a> if you get stuck!
+	.row
+		.col.s4
+			ul.collection.with-header
+				li.collection-header: h5 Features
+				a.collection-item(href="/dashboard?network=#{network_id}")
+					span.title Home
+					br
+					span Features home
+				a.collection-item(href="/dashboard?network=#{network_id}&feature=something")
+					span.title Something
+					br
+					span Manage your somethings
+				a.collection-item(href="#!")
+					span.title Something 1
+					br
+					span Manage your somethings 1
+				a.collection-item(href="#!")
+					span.title Something 2
+					br
+					span Manage your somethings 2
+				a.collection-item(href="#!")
+					span.title Something 3
+					br
+					span Manage your somethings 3
+				a.collection-item(href="#!")
+					span.title Something 4
+					br
+					span Manage your somethings 4
+		.col.s8
+			block control

@@ -1,0 +1,15 @@
+extends ./layout.jade
+
+block content
+	.row
+		ul.collection
+			li.collection-item.center-align.
+				Don't have an account yet? <a href="/register">Register</a> a new account.
+	.row
+		form.col.s12(action="/confirm_login", method="POST")
+			include input_email.jade
+			include input_password.jade
+			.row
+				.col.s12
+					button.btn.waves-effect.waves-light(type="submit") Submit
+						i.material-icons.right send
