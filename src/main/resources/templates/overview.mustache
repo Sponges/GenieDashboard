@@ -1,0 +1,75 @@
+{{> header.mustache }}
+<div class="row">
+    <section class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>5</h3>
+                <p>Enabled Modules</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-cogs"></i>
+            </div>
+            <a href="/modules?network={{ network_id }}&module=manage" class="small-box-footer">
+                Manage Modules <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </section>
+    <section class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>14</h3>
+                <p>User Roles</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-users"></i>
+            </div>
+            <a href="/roles?network={{ network_id }}" class="small-box-footer">
+                Manage Roles <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </section>
+    <section class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>19</h3>
+                <p>Online Members</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-comments"></i>
+            </div>
+            <a href="/chat?network={{ network_id }}" class="small-box-footer">
+                View Chat <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </section>
+    <section class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>7</h3>
+                <p>Songs In Queue</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-music"></i>
+            </div>
+            <a href="/modules?network={{ network_id }}&module=music" class="small-box-footer">
+                Music Bot Module <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </section>
+</div>
+<div class="row">
+    <section class="col-lg-12">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Need help?</h3>
+            </div>
+            <div class="box-body">
+                <p>
+                    Make sure to read the Genie's <a href="/documentation">documentation</a> to find a range of written guides and video tutorials to
+                    help you use the Genie! Already an expert? Submit your own guides and tutorials - all you need is a GitHub account.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+{{> footer.mustache }}

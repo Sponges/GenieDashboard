@@ -1,0 +1,119 @@
+{{> header.mustache }}
+<div class="row">
+    <section class="col-lg-4 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>Discord</h3>
+                <p>2 Networks</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-desktop"></i>
+            </div>
+            <a href="#" class="small-box-footer" data-toggle="modal" data-target="#discordModal">
+                Manage Platform <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </section>
+    <section class="col-lg-4 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>Skype</h3>
+                <p>17 Networks</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-desktop"></i>
+            </div>
+            <a href="#" class="small-box-footer" data-toggle="modal" data-target="#skypeModal">
+                Manage Platform <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </section>
+    <section class="col-lg-4 col-xs-6">
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>Add More</h3>
+                <p>Add Another Platform</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal">
+                Add Another Platform <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </section>
+</div>
+
+<!-- discord modal -->
+<div class="modal fade" id="discordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Platform: Discord</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- add a table of networks -->
+                        <!-- instructions to add in a new network -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- skype modal -->
+<div class="modal fade" id="skypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                One fine body...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add more modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                One fine body...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{> footer.mustache }}
