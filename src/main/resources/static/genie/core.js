@@ -5,6 +5,11 @@ $(document).ready(function() {
 			return;
 		}
 		var json = JSON.parse($(jsonKey).html());
+		var showAds = json.show_ads;
+		if (showAds) {
+			$("#advertisement-section").show();
+		}
+
 		var currentPage = json.page_name;
 
 		// roles page content loading
@@ -71,8 +76,13 @@ function displayRole(json) {
 	}
 
 	// populating users table
-	{
-
+	if (role.hasOwnProperty("users")) {
+		var users = role.users;
+		var table = $("#users_table");
+		for (userIndex in users) {
+			var user = users[userIndex];
+			table.append('<tr><td>' + user.username + '</td><td>' + user.id + '</td><td style="text-align: center;"><a href="#"><i class="fa fa-trash text-red"></i></a></td></tr>');
+		}
 	}
 }
 

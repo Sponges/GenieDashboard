@@ -1,0 +1,19 @@
+#advertisement-section {
+    color: #6e6e6e;
+}
+
+#advertisement-section p {
+    margin-top: 10px;
+}
+
+.advertisement {
+    background-color: white;
+    width: 468px;
+    height: 60px;
+    border: 1px solid #bdbdbd;
+    padding: 15px;
+}
+
+.xipefont {
+    font-family: 'Pacifico', cursive;
+}

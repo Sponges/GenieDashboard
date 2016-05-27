@@ -15,13 +15,15 @@ public final class Model {
     private final Map<String, Object> modelProperties = new HashMap<>();
     private final Map<String, Object> jsonProperties = new HashMap<>();
 
+    private final User user;
     private final String pageName;
     private final String pageTitle;
     private final String contentTitle;
     private final String contentSubtitle;
     private final String[] activeTabs;
 
-    public Model(String pageName, String pageTitle, String contentTitle, String contentSubtitle, String... activeTabs) {
+    public Model(User user, String pageName, String pageTitle, String contentTitle, String contentSubtitle, String... activeTabs) {
+        this.user = user;
         this.pageName = pageName;
         this.pageTitle = pageTitle;
         this.contentTitle = contentTitle;
@@ -51,6 +53,11 @@ public final class Model {
         JSONObject json = new JSONObject();
         json.put("page_name", pageName);
         json.put("active_tabs", activeTabs);
+        if (pageName.equals("donate")) {
+            json.put("show_ads", false);
+        } else {
+            json.put("show_ads", !user.isDonator());
+        }
         for (Map.Entry<String, Object> entry : jsonProperties.entrySet()) {
             json.put(entry.getKey(), entry.getValue());
         }
