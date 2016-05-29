@@ -6,6 +6,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.Set;
+
 public class ShitpostingModule extends Module {
 
     public ShitpostingModule() {
@@ -14,8 +16,14 @@ public class ShitpostingModule extends Module {
 
     @Override
     public ModelAndView execute(Request request, Response response) {
+        Set<String> params = request.queryParams();
+        String network = request.queryParams("network");
+        if (network == null) {
+            response.redirect("/");
+            return new ModelAndView(new Model(Routes.getUser(request.session()), "error", "Error", "Error", "Error", "dashboard_item").toMap(), "error.mustache");
+        }
         Model model = new Model(Routes.getUser(request.session()), "shitposting_module", "Shitposting", "Shitposting", "Manage the shitposting module",
-                "myguild1_item", "myguild1_modules_item", "myguild1_shitposting_module_item");
+                network + "_item", network + "_modules_item", network + "_shitposting_module_item");
         return new ModelAndView(model.toMap(), "shitposting_module.mustache");
     }
 }

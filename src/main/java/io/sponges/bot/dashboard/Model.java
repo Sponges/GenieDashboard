@@ -61,6 +61,7 @@ public final class Model {
         for (Map.Entry<String, Object> entry : jsonProperties.entrySet()) {
             json.put(entry.getKey(), entry.getValue());
         }
+        json.put("networks", new JSONObject("{\"networks\":[{\"id\":\"network1836334242\"},{\"id\":\"117861824124network\"}]}"));
         return json.toString();
     }
 

@@ -6,6 +6,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.Set;
+
 public class ChatBridgesModule extends Module {
 
     public ChatBridgesModule() {
@@ -14,9 +16,15 @@ public class ChatBridgesModule extends Module {
 
     @Override
     public ModelAndView execute(Request request, Response response) {
+        Set<String> params = request.queryParams();
+        String network = request.queryParams("network");
+        if (network == null) {
+            response.redirect("/");
+            return new ModelAndView(new Model(Routes.getUser(request.session()), "error", "Error", "Error", "Error", "dashboard_item").toMap(), "error.mustache");
+        }
         Model model = new Model(Routes.getUser(request.session()), "bridges_module", "Chat Bridges", "Chat Bridges",
-                "Manage the chat bridges module", "myguild1_item", "myguild1_modules_item",
-                "myguild1_bridges_module_item");
+                "Manage the chat bridges module", network + "_item", network + "_modules_item",
+                network + "_bridges_module_item");
         return new ModelAndView(model.toMap(), "bridges_module.mustache");
     }
 }

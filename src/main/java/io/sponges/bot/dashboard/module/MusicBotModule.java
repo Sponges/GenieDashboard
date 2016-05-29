@@ -6,6 +6,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.Set;
+
 public class MusicBotModule extends Module {
 
     public MusicBotModule() {
@@ -14,8 +16,14 @@ public class MusicBotModule extends Module {
 
     @Override
     public ModelAndView execute(Request request, Response response) {
+        Set<String> params = request.queryParams();
+        String network = request.queryParams("network");
+        if (network == null) {
+            response.redirect("/");
+            return new ModelAndView(new Model(Routes.getUser(request.session()), "error", "Error", "Error", "Error", "dashboard_item").toMap(), "error.mustache");
+        }
         Model model = new Model(Routes.getUser(request.session()), "music_module", "Music Bot", "Music Bot", "Manage the music bot module",
-                "myguild1_item", "myguild1_modules_item", "myguild1_music_module_item");
+                network + "_item", network + "_modules_item", network + "_music_module_item");
         return new ModelAndView(model.toMap(), "music_module.mustache");
     }
 }

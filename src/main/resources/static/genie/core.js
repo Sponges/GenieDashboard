@@ -10,6 +10,8 @@ $(document).ready(function() {
 			$("#advertisement-section").show();
 		}
 
+		loadNetworks(json);
+
 		var currentPage = json.page_name;
 
 		// roles page content loading
@@ -88,4 +90,14 @@ function displayRole(json) {
 
 function hideRoleDisplay(json) {
 	$("#settings_box").html("<h4>Select one of the roles on the left or create one if none exist!</h4>");
+}
+
+function loadNetworks(json) {
+	var networks = json.networks.networks;
+	var element = $(".sidebar-menu");
+	for (networkIndex in networks) {
+		var network = networks[networkIndex];
+		var networkId = network.id;
+		element.append('<li id="' + networkId + '_item"> <a href="#"><i class="fa fa-th-list"></i> <span>My Guild</span> <i class="fa fa-angle-left pull-right"></i> </a> <ul class="treeview-menu"> <li id="' + networkId + '_overview_item"><a href="/overview?network=' + networkId + '"><i class="fa fa-laptop"></i> Overview</a></li><li id="' + networkId + '_chat_item"><a href="/chat?network=' + networkId + '"><i class="fa fa-comments"></i> Chat</a></li><li id="' + networkId + '_settings_item"><a href="/settings?network=' + networkId + '"><i class="fa fa-cog"></i> Settings</a></li><li id="' + networkId + '_roles_item"><a href="/roles?network=' + networkId + '"><i class="fa fa-users"></i> Manage Roles</a></li><li id="' + networkId + '_modules_item"> <a href="#"><i class="fa fa-plug"></i> Modules <i class="fa fa-angle-left pull-right"></i></a> <ul class="treeview-menu"> <li id="' + networkId + '_manage_module_item"><a href="/modules?network=' + networkId + '&module=manage"><i class="fa fa-cogs"></i> Manage Modules</a></li><li id="' + networkId + '_moderation_module_item"><a href="/modules?network=' + networkId + '&module=moderation"><i class="fa fa-check text-green"></i> Moderation</a></li><li id="' + networkId + '_music_module_item"><a href="/modules?network=' + networkId + '&module=music"><i class="fa fa-check text-green"></i> Music Bot</a></li><li id="' + networkId + '_bridges_module_item"><a href="/modules?network=' + networkId + '&module=bridges"><i class="fa fa-check text-green"></i> Chat Bridges</a></li><li id="' + networkId + '_shitposting_module_item"><a href="/modules?network=' + networkId + '&module=shitposting"><i class="fa fa-times text-red"></i> Shitposting</a></li><li id="' + networkId + '_chatterbot_module_item"><a href="/modules?network=' + networkId + '&module=chatterbot"><i class="fa fa-check text-green"></i> Chatterbot</a></li><li id="' + networkId + '_searchers_module_item"><a href="/modules?network=' + networkId + '&module=searchers"><i class="fa fa-check text-green"></i> Searchers</a></li></ul> </li></ul> </li>');
+	}
 }

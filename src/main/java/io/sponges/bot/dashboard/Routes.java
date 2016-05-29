@@ -2,10 +2,7 @@ package io.sponges.bot.dashboard;
 
 import io.sponges.bot.dashboard.module.*;
 import org.json.JSONObject;
-import spark.ModelAndView;
-import spark.Session;
-import spark.Spark;
-import spark.TemplateEngine;
+import spark.*;
 import spark.debug.DebugScreen;
 import spark.template.mustache.MustacheTemplateEngine;
 
@@ -75,7 +72,7 @@ public class Routes {
     }
 
     private void documentation() {
-        Spark.get("/documentation", (request, response) -> "Documentation coming soon!");
+        Spark.redirect.get("/documentation", "https://github.com/Sponges/GenieDocs/wiki");
     }
 
     private void platforms() {
@@ -92,7 +89,7 @@ public class Routes {
                 response.redirect("/");
             }
             String network = request.queryParams("network");
-            Model model = new Model(Routes.getUser(request.session()), "overview", "Overview", "Overview", "Network ID: " + network, "myguild1_item", "myguild1_overview_item");
+            Model model = new Model(Routes.getUser(request.session()), "overview", "Overview", "Overview", "Network ID: " + network, network + "_item", network + "_overview_item");
             model.addModelProperty("network_id", network);
             return new ModelAndView(model.toMap(), "overview.mustache");
         }, engine);
@@ -109,7 +106,7 @@ public class Routes {
                 response.redirect("/");
             }
             String network = request.queryParams("network");
-            Model model = new Model(Routes.getUser(request.session()), "settings", "Settings", "Settings", "Network ID: " + network, "myguild1_item", "myguild1_settings_item");
+            Model model = new Model(Routes.getUser(request.session()), "settings", "Settings", "Settings", "Network ID: " + network, network + "_item", network + "_settings_item");
             model.addModelProperty("network_id", network);
             return new ModelAndView(model.toMap(), "settings.mustache");
         }, engine);
@@ -125,12 +122,12 @@ public class Routes {
             Model model;
             if (params.size() == 1) {
                 model = new Model(Routes.getUser(request.session()), "roles", "Manage Roles", "Manage Roles", "Network ID: " + network,
-                        "myguild1_item", "myguild1_roles_item");
+                        network + "_item", network + "_roles_item");
             } else {
                 String selectedRole = request.queryParams("role");
                 String tab = selectedRole.toLowerCase() + "_role_tab";
                 model = new Model(Routes.getUser(request.session()), "roles", "Manage Roles", "Manage Roles", "Network ID: " + network,
-                        "myguild1_item", "myguild1_roles_item", tab);
+                        network + "_item", network + "_roles_item", tab);
                 if (selectedRole.equals("admin")) model.addJsonProperty("role_info", new JSONObject("{\"role\":{\"permissions\":[\"this.is.a.test\",\"cli\"],\"id\":\"admin\",\"users\":[{\"id\":\"cli\"}]}}"));
                 else if (selectedRole.equals("moderator")) model.addJsonProperty("role_info", new JSONObject("{\"role\":{\"permissions\":[\"aaaaaaa.lol\",\"hi.holy.fuck\",\"wow.*\"],\"id\":\"moderator\"}}"));
                 else if (selectedRole.equals("trusted")) model.addJsonProperty("role_info", new JSONObject("{\"role\":{\"permissions\":[\"thdhrhrddrhhr.a.test\",\"hi.oooooe\",\"wowdrh.rdhrdhdude.*\"],\"id\":\"trusted\"}}"));
@@ -164,7 +161,7 @@ public class Routes {
             if (params.size() == 1) {
                 // redirect to the module manager
                 response.redirect("/modules?network=" + network + "&module=manage");
-                return new ModelAndView(new Model(Routes.getUser(request.session()), "error", "Error", "Error", "Error", "myguild1_item").toMap(), "error.mustache");
+                return new ModelAndView(new Model(Routes.getUser(request.session()), "error", "Error", "Error", "Error", network + "_item").toMap(), "error.mustache");
             }
             String module = request.queryParams("module");
             return modules.get(module).execute(request, response);
